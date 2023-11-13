@@ -49,7 +49,8 @@ class Variant extends Resource
                 ->sortable()
                 ->rules("required"),
 
-            BelongsTo::make("Brand"),
+            BelongsTo::make("Brand")
+                ->filterable(),
 
             Date::make("Release Date")
                 ->filterable()
