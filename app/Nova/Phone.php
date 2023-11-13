@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\FormData;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -61,7 +62,8 @@ class Phone extends Resource
                 ->sortable()
                 ->rules("required"),
 
-            Textarea::make("Description")
+            Markdown::make("Description")
+                ->fullWidth(true)
                 ->sortable()
                 ->nullable(),
 
