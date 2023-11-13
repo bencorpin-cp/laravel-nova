@@ -53,6 +53,7 @@ class Variant extends Resource
 
             Date::make("Release Date")
                 ->filterable()
+                ->sortable()
                 ->rules("required"),
         ];
     }
