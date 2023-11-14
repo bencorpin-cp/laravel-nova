@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Owner;
 use App\Nova\Brand;
 use App\Nova\Phone;
 use App\Nova\Stock;
@@ -24,28 +25,29 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         parent::boot();
 
-        Nova::withBreadcrumbs();
-
-        Nova::initialPath("/resources/phones");
-
-        Nova::mainMenu(fn($request) => [
-            MenuSection::make("Phones", [
-                MenuItem::resource(Phone::class),
-                MenuItem::resource(Brand::class),
-                MenuItem::resource(Variant::class),
-            ])->collapsable()
-                ->icon("device-tablet"),
-
-            MenuSection::make("Stocks", [
-                MenuItem::resource(Stock::class),
-            ])->collapsable()
-                ->icon("cube"),
-
-            MenuSection::make("Settings", [
-                MenuItem::resource(User::class),
-            ])->collapsable()
-                ->icon("cog"),
-        ]);
+//        Nova::withBreadcrumbs();
+//
+//        Nova::initialPath("/resources/phones");
+//
+//        Nova::mainMenu(fn($request) => [
+//            MenuSection::make("Phones", [
+//                MenuItem::resource(Owner::class),
+//                MenuItem::resource(Phone::class),
+//                MenuItem::resource(Brand::class),
+//                MenuItem::resource(Variant::class),
+//            ])->collapsable()
+//                ->icon("device-tablet"),
+//
+//            MenuSection::make("Stocks", [
+//                MenuItem::resource(Stock::class),
+//            ])->collapsable()
+//                ->icon("cube"),
+//
+//            MenuSection::make("Settings", [
+//                MenuItem::resource(User::class),
+//            ])->collapsable()
+//                ->icon("cog"),
+//        ]);
     }
 
     /**
