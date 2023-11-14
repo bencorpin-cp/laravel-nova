@@ -50,6 +50,7 @@ class Variant extends Resource
                 ->rules("required"),
 
             BelongsTo::make("Brand")
+                ->showCreateRelationButton()
                 ->filterable(),
 
             Date::make("Release Date")

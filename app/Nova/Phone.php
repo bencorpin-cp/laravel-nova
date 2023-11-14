@@ -69,9 +69,11 @@ class Phone extends Resource
                 ->nullable(),
 
             BelongsTo::make("Brand")
+                ->showCreateRelationButton()
                 ->filterable(),
 
             BelongsTo::make("Variant", "variant")
+                ->showCreateRelationButton()
                 ->dependsOn(['brand'], function (BelongsTo $field, NovaRequest $request, FormData $data){
                     if($data->brand === null){
                         $field->hide();
@@ -83,6 +85,9 @@ class Phone extends Resource
                 }),
 
             BelongsTo::make("Owner")
+                ->showCreateRelationButton()
+                ->searchable()
+                ->sortable()
                 ->filterable(),
 
         ];
