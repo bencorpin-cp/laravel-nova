@@ -88,6 +88,7 @@ class Phone extends Resource
                 ->showCreateRelationButton()
                 ->searchable()
                 ->sortable()
+                ->modalSize("2xl")
                 ->filterable(),
 
         ];
