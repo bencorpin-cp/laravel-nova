@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("brand_id");
             $table->string("name");
-            $table->date("release_date");
+            $table->date("release_date")
+                ->nullable();
             $table->timestamps();
 
             $table->foreign("brand_id")
