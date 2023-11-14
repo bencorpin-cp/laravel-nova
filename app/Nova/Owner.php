@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\HasMany;
@@ -47,6 +48,11 @@ class Owner extends Resource
     public function fields(NovaRequest $request)
     {
         return [
+            Image::make("Image", "image")
+                ->disk("public")
+                ->path("profile")
+                ->prunable(),
+
             Text::make("Name")
                 ->sortable(),
 
