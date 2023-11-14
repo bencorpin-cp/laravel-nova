@@ -25,7 +25,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         parent::boot();
 
-//        Nova::withBreadcrumbs();
+        Nova::withBreadcrumbs();
 //
 //        Nova::initialPath("/resources/phones");
 //

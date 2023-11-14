@@ -3,6 +3,8 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -43,8 +45,6 @@ class Owner extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            ID::make()->sortable(),
-
             Text::make("Name"),
 
             Number::make("Age"),
@@ -52,6 +52,8 @@ class Owner extends Resource
             Text::make("Gender"),
 
             Textarea::make("Address"),
+
+            HasMany::make("Phones", "phones"),
         ];
     }
 

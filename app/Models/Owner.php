@@ -10,4 +10,9 @@ class Owner extends Model
     use HasFactory;
 
     protected $fillable = [];
+
+    public function phones()
+    {
+        return $this->hasMany(Phone::class);
+    }
 }

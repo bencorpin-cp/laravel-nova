@@ -18,4 +18,9 @@ class Phone extends Model
     {
         return $this->belongsTo(Variant::class);
     }
+
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class);
+    }
 }

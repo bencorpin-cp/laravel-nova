@@ -26,7 +26,7 @@ class Phone extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -37,8 +37,8 @@ class Phone extends Resource
         'id',
         'imei',
         'name',
-        'brand.name',
         'variant.name',
+        'owner.name',
     ];
 
     /**
@@ -52,7 +52,7 @@ class Phone extends Resource
         return [
             Text::make("IMEI", "imei")
                 ->sortable()
-                ->rules("required", "unique:phones", "max:15"),
+                ->rules("required"),
 
             Text::make("Phone Name", "name")
                 ->sortable()
@@ -60,6 +60,7 @@ class Phone extends Resource
 
             Text::make("Color")
                 ->sortable()
+                ->hideFromIndex()
                 ->rules("required"),
 
             Markdown::make("Description")
@@ -80,6 +81,9 @@ class Phone extends Resource
                         $query->where('brand_id', $data->brand);
                     });
                 }),
+
+            BelongsTo::make("Owner")
+                ->filterable(),
 
         ];
     }
