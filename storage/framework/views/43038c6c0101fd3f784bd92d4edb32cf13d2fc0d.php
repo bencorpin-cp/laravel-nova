@@ -56,4 +56,4 @@
     </script>
 </body>
 </html>
-<?php /**PATH /home/ben_corpin/laravel-nova/vendor/laravel/nova/src/../resources/views/layout.blade.php ENDPATH**/ ?>
+<?php /**PATH /home/ben_corpin/laravel-nova-copy/laravel-nova/vendor/laravel/nova/src/../resources/views/layout.blade.php ENDPATH**/ ?>
