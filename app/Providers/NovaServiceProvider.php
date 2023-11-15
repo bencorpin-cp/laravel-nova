@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Nova\Brand;
+use App\Nova\Customer;
 use App\Nova\Owner;
 use App\Nova\Phone;
 use App\Nova\Stock;
@@ -34,7 +35,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuItem::resource(Phone::class),
                 MenuItem::resource(Brand::class),
                 MenuItem::resource(Variant::class),
-                MenuItem::resource(Owner::class),
+                MenuItem::resource(Customer::class),
             ])->collapsable()
                 ->icon("device-tablet"),
 

@@ -2,31 +2,29 @@
 
 namespace App\Nova;
 
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\FormData;
+use Laravel\Nova\Fields\Avatar;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Markdown;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Phone extends Resource
+class Customer extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Phone>
+     * @var class-string<\App\Models\Customer>
      */
-    public static $model = \App\Models\Phone::class;
+    public static $model = \App\Models\Customer::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -35,10 +33,6 @@ class Phone extends Resource
      */
     public static $search = [
         'id',
-        'imei',
-        'name',
-        'variant.name',
-        'owner.name',
     ];
 
     /**
@@ -50,40 +44,20 @@ class Phone extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            Text::make("IMEI", "imei")
-                ->sortable()
-                ->rules("required"),
+            ID::make()->sortable(),
 
-            Text::make("Phone Name", "name")
-                ->sortable()
-                ->rules("required"),
+            Avatar::make("Image"),
 
-            Text::make("Color")
-                ->sortable()
-                ->hideFromIndex()
-                ->rules("required"),
+            Textarea::make("Name"),
 
-            Markdown::make("Description")
-                ->fullWidth(true)
-                ->sortable()
-                ->nullable(),
+            Select::make("Gender")->options([
+               'Male' => 'Male',
+               'Female' => 'Female'
+            ]),
 
-            BelongsTo::make("Brand")
-                ->showCreateRelationButton()
-                ->filterable(),
+            Date::make("Birthdate"),
 
-            BelongsTo::make("Variant", "variant")
-                ->showCreateRelationButton()
-                ->dependsOn(['brand'], function (BelongsTo $field, NovaRequest $request, FormData $data){
-                    if($data->brand === null){
-                        $field->hide();
-                    }
-
-                    $field->relatableQueryUsing(function (NovaRequest $request, Builder $query) use ($data){
-                        $query->where('brand_id', $data->brand);
-                    });
-                }),
-
+            Textarea::make("address"),
         ];
     }
 
