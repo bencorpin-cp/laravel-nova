@@ -51,15 +51,19 @@ class Owner extends Resource
     {
         return [
             Avatar::make("Image")
+                ->showWhenPeeking()
                 ->path("profiles")
                 ->prunable(),
 
             Text::make("Name")
+                ->showWhenPeeking()
                 ->sortable(),
 
-            Number::make("Age"),
+            Number::make("Age")
+                ->showWhenPeeking(),
 
-            Text::make("Gender"),
+            Text::make("Gender")
+                ->showWhenPeeking(),
 
             Textarea::make("Address"),
 

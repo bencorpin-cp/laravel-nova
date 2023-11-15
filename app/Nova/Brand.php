@@ -45,9 +45,11 @@ class Brand extends Resource
     {
         return [
             Text::make("Brand Name", "name")
+                ->showWhenPeeking()
                 ->rules("required", "unique:brands"),
 
             URL::make("Website", "website_url")
+                ->showWhenPeeking()
                 ->rules("required"),
 
             HasMany::make("Variants"),
