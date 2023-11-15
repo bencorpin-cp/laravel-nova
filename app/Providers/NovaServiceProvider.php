@@ -32,9 +32,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         Nova::mainMenu(fn($request) => [
             MenuSection::make("Phones", [
                 MenuItem::resource(Phone::class),
-                MenuItem::resource(Owner::class),
                 MenuItem::resource(Brand::class),
                 MenuItem::resource(Variant::class),
+                MenuItem::resource(Owner::class),
             ])->collapsable()
                 ->icon("device-tablet"),
 
