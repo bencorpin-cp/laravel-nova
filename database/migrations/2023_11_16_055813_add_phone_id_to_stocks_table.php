@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::table('stocks', function (Blueprint $table) {
-            $table->unsignedBigInteger("brand_id");
+            $table->unsignedBigInteger("phone_id");
 
-            $table->foreign("brand_id")
+            $table->foreign("phone_id")
                 ->references("id")
-                ->on("brands");
+                ->on("phones");
         });
     }
 
@@ -30,7 +30,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('stocks', function (Blueprint $table) {
-            $table->dropColumn("brand_id");
+            $table->dropForeign("phone_id");
         });
     }
 };

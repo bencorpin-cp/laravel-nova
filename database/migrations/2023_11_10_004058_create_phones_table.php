@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('phones', function (Blueprint $table) {
             $table->id();
-            $table->string("imei");
             $table->string("name");
             $table->string("color");
             $table->string("description");

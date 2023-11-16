@@ -65,8 +65,6 @@ class Customer extends Resource
 
             Textarea::make("Address")
                 ->showWhenPeeking(),
-
-            HasMany::make("Phones"),
         ];
     }
 

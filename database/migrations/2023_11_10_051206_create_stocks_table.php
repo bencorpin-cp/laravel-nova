@@ -15,14 +15,9 @@ return new class extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("variant_id");
             $table->integer("quantity");
             $table->boolean("is_selling");
             $table->timestamps();
-
-            $table->foreign("variant_id")
-                ->references("id")
-                ->on("variants");
         });
     }
 

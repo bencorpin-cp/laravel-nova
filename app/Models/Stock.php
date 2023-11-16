@@ -18,4 +18,9 @@ class Stock extends Model
     {
         return $this->belongsTo(Variant::class);
     }
+
+    public function phone()
+    {
+        return $this->belongsTo(Phone::class);
+    }
 }

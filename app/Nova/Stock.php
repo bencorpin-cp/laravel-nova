@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\FormData;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -50,21 +51,7 @@ class Stock extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make("Brand")
-                ->filterable(),
-
-            BelongsTo::make("Variant")
-                ->dependsOn(["brand"],function (BelongsTo $field, NovaRequest $request, FormData $data){
-                    if($data->brand === null){
-                        $field->hide();
-                    }
-
-                    $field->relatableQueryUsing(function (NovaRequest $request, Builder $query) use ($data){
-                        $query->where("brand_id", $data->brand);
-                    });
-                })
-                ->filterable()
-                ->rules("required"),
+            BelongsTo::make("Phone"),
 
             Number::make("Quantity")
                 ->rules("required")

@@ -13,8 +13,4 @@ class Customer extends Model
         "birthdate" => "date",
     ];
 
-    public function phones()
-    {
-        return $this->hasMany(Phone::class);
-    }
 }

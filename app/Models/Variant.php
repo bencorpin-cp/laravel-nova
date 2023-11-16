@@ -22,8 +22,8 @@ class Variant extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function stock()
+    public function stocks()
     {
-        return $this->belongsTo(Stock::class);
+        return $this->hasMany(Stock::class);
     }
 }
