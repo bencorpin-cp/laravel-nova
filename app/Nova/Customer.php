@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
@@ -25,7 +26,7 @@ class Customer extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -47,18 +48,25 @@ class Customer extends Resource
         return [
             ID::make()->sortable(),
 
-            Avatar::make("Image"),
+            Avatar::make("Image")
+                ->showWhenPeeking(),
 
-            Text::make("Name"),
+            Text::make("Name")
+                ->showWhenPeeking(),
 
             Select::make("Gender")->options([
                'Male' => 'Male',
                'Female' => 'Female'
-            ]),
+            ])
+                ->showWhenPeeking(),
 
-            Date::make("Birthdate"),
+            Date::make("Birthdate")
+                ->showWhenPeeking(),
 
-            Textarea::make("address"),
+            Textarea::make("Address")
+                ->showWhenPeeking(),
+
+            HasMany::make("Phones"),
         ];
     }
 

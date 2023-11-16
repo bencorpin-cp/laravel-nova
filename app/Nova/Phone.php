@@ -84,6 +84,7 @@ class Phone extends Resource
                     });
                 }),
 
+            BelongsTo::make("Customer")
         ];
     }
 

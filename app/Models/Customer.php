@@ -12,4 +12,9 @@ class Customer extends Model
     protected $casts = [
         "birthdate" => "date",
     ];
+
+    public function phones()
+    {
+        return $this->hasMany(Phone::class);
+    }
 }
