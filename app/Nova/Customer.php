@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -48,7 +49,7 @@ class Customer extends Resource
 
             Avatar::make("Image"),
 
-            Textarea::make("Name"),
+            Text::make("Name"),
 
             Select::make("Gender")->options([
                'Male' => 'Male',
