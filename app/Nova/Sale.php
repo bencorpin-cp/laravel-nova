@@ -5,28 +5,27 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Variant extends Resource
+class Sale extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Variant>
+     * @var class-string<\App\Models\Sale>
      */
-    public static $model = \App\Models\Variant::class;
+    public static $model = \App\Models\Sale::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -35,7 +34,6 @@ class Variant extends Resource
      */
     public static $search = [
         'id',
-        'name',
     ];
 
     /**
@@ -47,20 +45,24 @@ class Variant extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            Text::make("Variant / Model", "name")
-                ->sortable()
-                ->rules("required"),
+            ID::make()->sortable(),
 
-            BelongsTo::make("Brand")
-                ->showWhenPeeking()
-                ->showCreateRelationButton()
-                ->filterable(),
+            BelongsTo::make("Stock"),
 
-            Date::make("Release Date")
-                ->showWhenPeeking()
-                ->filterable()
-                ->sortable()
-                ->nullable(),
+            BelongsTo::make("Customer")
+                ->searchable()
+                ->showCreateRelationButton(),
+
+            Number::make("Quantity")
+                ->rules("required", "integer"),
+
+            DateTime::make("Time Sold", "created_at")
+                ->displayUsing(function ($value) {
+              return $value->format("m/d/Y h:i A");
+            })
+                ->readonly()
+            ->hideWhenCreating()
+            ->hideWhenUpdating(),
         ];
     }
 

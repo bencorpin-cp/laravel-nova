@@ -6,6 +6,7 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\FormData;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
@@ -36,10 +37,8 @@ class Phone extends Resource
      */
     public static $search = [
         'id',
-        'imei',
         'name',
         'variant.name',
-        'owner.name',
     ];
 
     /**
@@ -87,7 +86,7 @@ class Phone extends Resource
                     });
                 }),
 
-            HasOne::make("Stock"),
+            HasMany::make("Stocks"),
         ];
     }
 

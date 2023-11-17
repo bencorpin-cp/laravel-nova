@@ -12,5 +12,4 @@ class Customer extends Model
     protected $casts = [
         "birthdate" => "date",
     ];
-
 }

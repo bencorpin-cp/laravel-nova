@@ -21,9 +21,4 @@ class Variant extends Model
     {
         return $this->belongsTo(Brand::class);
     }
-
-    public function stocks()
-    {
-        return $this->hasMany(Stock::class);
-    }
 }

@@ -9,6 +9,10 @@ class Stock extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'sold_at' => 'datetime',
+    ];
+
     public function brand()
     {
         return $this->belongsTo(Brand::class);
@@ -22,5 +26,14 @@ class Stock extends Model
     public function phone()
     {
         return $this->belongsTo(Phone::class);
+    }
+
+    public function sales()
+    {
+        return $this->belongsToMany(Sale::class)
+            ->withPivot([
+                "quantity",
+                "sold_at",
+            ]);
     }
 }

@@ -5,12 +5,15 @@ namespace App\Nova;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\FormData;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Stock extends Resource
@@ -27,7 +30,7 @@ class Stock extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'phone.name';
 
     /**
      * The columns that should be searched.
@@ -37,7 +40,8 @@ class Stock extends Resource
     public static $search = [
         'id',
         'brand.name',
-        'variant.name'
+        'variant.name',
+        'phone.name',
     ];
 
     /**

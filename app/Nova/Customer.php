@@ -35,6 +35,7 @@ class Customer extends Resource
      */
     public static $search = [
         'id',
+        'name'
     ];
 
     /**

@@ -6,6 +6,7 @@ use App\Nova\Brand;
 use App\Nova\Customer;
 use App\Nova\Owner;
 use App\Nova\Phone;
+use App\Nova\Sale;
 use App\Nova\Stock;
 use App\Nova\User;
 use App\Nova\Variant;
@@ -38,6 +39,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuItem::resource(Customer::class),
             ])->collapsable()
                 ->icon("device-tablet"),
+
+            MenuSection::make("Sales", [
+                MenuItem::resource(Sale::class),
+            ])->collapsable()
+                ->icon("currency-dollar"),
 
             MenuSection::make("Stocks", [
                 MenuItem::resource(Stock::class),
