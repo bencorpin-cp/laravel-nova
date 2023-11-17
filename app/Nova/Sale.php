@@ -56,6 +56,18 @@ class Sale extends Resource
             Number::make("Quantity")
                 ->rules("required", "integer"),
 
+            Number::make("Phone Price", function () {
+                $phonePrice = $this->stock->phone->price ?? 0;
+                return number_format($phonePrice,2,".");
+            })
+                ->readonly()
+                ->hideFromIndex(),
+
+            Number::make("Total Price", function () {
+                $totalPrice = $this->quantity * ($this->stock->phone->price ?? 0);
+                return number_format($totalPrice,2, ".");
+            })->readonly(),
+
             DateTime::make("Time Sold", "created_at")
                 ->displayUsing(function ($value) {
               return $value->format("m/d/Y h:i A");

@@ -39,8 +39,6 @@ class Stock extends Resource
      */
     public static $search = [
         'id',
-        'brand.name',
-        'variant.name',
         'phone.name',
     ];
 

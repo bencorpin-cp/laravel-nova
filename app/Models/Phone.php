@@ -19,9 +19,9 @@ class Phone extends Model
         return $this->belongsTo(Variant::class);
     }
 
-    public function stocks()
+    public function stock()
     {
-        return $this->hasMany(Stock::class);
+        return $this->hasOne(Stock::class);
     }
 
     public function sales()

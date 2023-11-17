@@ -66,7 +66,10 @@ class Phone extends Resource
             Number::make("Price")
                 ->sortable()
                 ->showWhenPeeking()
-                ->rules("required"),
+                ->rules("required")
+                ->displayUsing(function ($value){
+                    return number_format($value,2,".", ",");
+                }),
 
             Markdown::make("Description")
                 ->fullWidth(true)
@@ -92,7 +95,7 @@ class Phone extends Resource
                     });
                 }),
 
-            HasMany::make("Stocks"),
+            HasOne::make("Stock"),
         ];
     }
 
