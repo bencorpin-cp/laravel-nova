@@ -63,6 +63,8 @@ class Stock extends Resource
                 ->help("Check if the stock is currently selling.")
                 ->filterable()
                 ->default(true),
+
+            HasMany::make("Sales"),
         ];
     }
 

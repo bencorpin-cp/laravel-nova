@@ -34,6 +34,7 @@ class Sale extends Resource
      */
     public static $search = [
         'id',
+        'customer.name',
     ];
 
     /**
@@ -47,21 +48,22 @@ class Sale extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make("Stock"),
+            BelongsTo::make("Stock")
+                ->filterable(),
 
             BelongsTo::make("Customer")
                 ->searchable()
                 ->showCreateRelationButton(),
 
             Number::make("Quantity")
+                ->sortable()
                 ->rules("required", "integer"),
 
             Number::make("Phone Price", function () {
                 $phonePrice = $this->stock->phone->price ?? 0;
                 return number_format($phonePrice,2,".");
             })
-                ->readonly()
-                ->hideFromIndex(),
+                ->readonly(),
 
             Number::make("Total Price", function () {
                 $totalPrice = $this->quantity * ($this->stock->phone->price ?? 0);

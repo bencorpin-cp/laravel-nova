@@ -30,10 +30,6 @@ class Stock extends Model
 
     public function sales()
     {
-        return $this->belongsToMany(Sale::class)
-            ->withPivot([
-                "quantity",
-                "sold_at",
-            ]);
+        return $this->hasMany(Sale::class);
     }
 }
