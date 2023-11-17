@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -60,6 +61,11 @@ class Phone extends Resource
                 ->sortable()
                 ->showWhenPeeking()
                 ->hideFromIndex()
+                ->rules("required"),
+
+            Number::make("Price")
+                ->sortable()
+                ->showWhenPeeking()
                 ->rules("required"),
 
             Markdown::make("Description")
