@@ -53,13 +53,15 @@ class Customer extends Resource
                 ->showWhenPeeking(),
 
             Text::make("Name")
-                ->showWhenPeeking(),
+                ->showWhenPeeking()
+                ->rules("required", "unique:customers"),
 
             Select::make("Gender")->options([
                'Male' => 'Male',
                'Female' => 'Female'
             ])
-                ->showWhenPeeking(),
+                ->showWhenPeeking()
+                ->rules("required"),
 
             Date::make("Birthdate")
                 ->showWhenPeeking(),
