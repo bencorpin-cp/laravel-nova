@@ -2,11 +2,10 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
+use App\Nova\Metrics\NewSales;
+use App\Nova\Metrics\TotalSalesAmount;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -88,7 +87,10 @@ class Sale extends Resource
      */
     public function cards(NovaRequest $request)
     {
-        return [];
+        return [
+            new TotalSalesAmount(),
+            new NewSales(),
+        ];
     }
 
     /**
