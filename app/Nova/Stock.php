@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Metrics\StocksPerDay;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -76,7 +77,9 @@ class Stock extends Resource
      */
     public function cards(NovaRequest $request)
     {
-        return [];
+        return [
+            new StocksPerDay(),
+        ];
     }
 
     /**
