@@ -43,6 +43,8 @@ class Stock extends Resource
         'phone.name',
     ];
 
+    public static $tableStyle = "tight";
+
     /**
      * Get the fields displayed by the resource.
      *
