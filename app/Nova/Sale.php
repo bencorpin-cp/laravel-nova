@@ -36,6 +36,8 @@ class Sale extends Resource
         'customer.name',
     ];
 
+    public static $tableStyle = "tight";
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -56,7 +58,7 @@ class Sale extends Resource
 
             Number::make("Quantity")
                 ->sortable()
-                ->rules("required", "integer"),
+                ->rules("required", "integer", "min:1"),
 
             Number::make("Phone Price", function () {
                 $phonePrice = $this->stock->phone->price ?? 0;
