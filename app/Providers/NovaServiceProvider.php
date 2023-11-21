@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Nova\Brand;
 use App\Nova\Customer;
-use App\Nova\Owner;
 use App\Nova\Phone;
 use App\Nova\Sale;
 use App\Nova\Stock;
